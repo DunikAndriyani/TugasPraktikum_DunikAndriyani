@@ -1,0 +1,130 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Fungsi untuk menentukan bilangan genap
+void bilanganGenap(int batas) {
+    cout << "Bilangan genap antara 1 hingga " << batas << " adalah: ";
+    for (int i = 1; i <= batas; i++) {
+        if (i % 2 == 0) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+// Fungsi unuk menentukan bilangan ganjil
+void bilanganGanjil(int batas) {
+    cout << "Bilangan ganjil antara 1 hingga " << batas << " adalah: ";
+    for (int i = 1; i <= batas; i++) {
+        if (i % 2 == 1) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+// Fungsi untuk menentukan bilangan prima
+bool bilanganPrima(int bilangan) {
+    if (bilangan <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= bilangan / 2; i++) {
+        if (bilangan % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Fungsi untuk mencetak bilangan prima
+void cetakBilanganPrima(int batas) {
+    cout << "Bilangan prima antara 1 hingga " << batas << " adalah: ";
+    for (int i = 2; i <= batas; i++) {
+        if (bilanganPrima(i)) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+// Fungsi untuk menghitung jumlah bilangan ganjil
+int hitungJumlahGanjil(int batas) {
+    int jumlah = 0;
+    for (int i = 1; i <= batas; i++) {
+        if (i % 2 != 0) {
+            jumlah += i;
+        }
+    }
+    return jumlah;
+}
+
+// Fungsi untuk menghitung jumlah bilangan genap
+int hitungJumlahGenap(int batas) {
+    int jumlah = 0;
+    for (int i = 1; i <= batas; i++) {
+        if (i % 2 == 0) {
+            jumlah += i;
+        }
+    }
+    return jumlah;
+}
+
+// Fungsi untuk menghitung jumlah bilangan prima antara 1 dan batas
+int hitungJumlahPrima(int batas) {
+    int jumlah = 0;
+    for (int i = 2; i <= batas; i++) {
+        if (bilanganPrima(i)) {
+            jumlah += i;
+        }
+    }
+    return jumlah;
+}
+
+// Fungsi untuk mencetak faktor-faktor dari suatu bilangan
+void cetakFaktor(int bilangan) {
+    cout << "Faktor-faktor dari " << bilangan << " adalah: ";
+    for (int i = 1; i <= bilangan; i++) {
+        if (bilangan % i == 0) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+// Fungsi untuk mencetak faktor-faktor dari jumlah bilangan ganjil
+void cetakFaktorJumlahGanjil(int batas) {
+    int jumlahGanjil = hitungJumlahGanjil(batas);
+    cout << "Faktor-faktor dari jumlah bilangan ganjil antara 1 hingga " << batas << " adalah: ";
+    cetakFaktor(jumlahGanjil);
+}
+
+// Fungsi untuk mencetak faktor-faktor dari jumlah bilangan prima
+void cetakFaktorJumlahPrima(int batas) {
+    int jumlahPrima = hitungJumlahPrima(batas);
+    cout << "Faktor-faktor dari jumlah bilangan prima antara 1 hingga " << batas << " adalah: ";
+    cetakFaktor(jumlahPrima);
+}
+
+int main() {
+    int batas;
+
+    cout << "Masukkan batas nilai bilangan: ";
+    cin >> batas;
+
+    bilanganGanjil(batas);
+    bilanganGenap(batas);
+    cetakBilanganPrima(batas);
+
+    int jumlahGanjil = hitungJumlahGanjil(batas);
+    int jumlahGenap = hitungJumlahGenap(batas);
+    int jumlahPrima = hitungJumlahPrima(batas);
+
+    cout << "Jumlah nilai bilangan ganjil antara 1 hingga " << batas << " adalah: " << jumlahGanjil << endl;
+    cout << "Jumlah nilai bilangan genap antara 1 hingga " << batas << " adalah: " << jumlahGenap << endl;
+    cout << "Jumlah nilai bilangan prima antara 1 hingga " << batas << " adalah: " << jumlahPrima << endl;
+
+    cetakFaktorJumlahGanjil(batas);
+    cetakFaktorJumlahPrima(batas);
+
+    return 0;
+}
